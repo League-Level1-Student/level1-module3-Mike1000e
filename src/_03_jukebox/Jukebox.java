@@ -23,12 +23,12 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
 public class Jukebox implements Runnable {
 
     public void run() {
-
+    	Song song = new Song("/Users⁩/denisluckash⁩/⁨Downloads⁩/425556__planetronik__rock-808-beat.mp3");
 		// 1. Find an mp3 on your computer or on the Internet.
 		// 2. Create a Song object for that mp3
 
 		// 3. Play the Song
-
+    	song.play();
 		/*
 		 * 4. Create a user interface for your Jukebox so that the user can to
 		 * choose which song to play. You can use can use a different button for
@@ -63,6 +63,7 @@ class Song {
 	 * 		new Song("everywhere.mp3"); 	//from default package 
 	 * 		new Song("/Users/joonspoon/music/Vampire Weekend - Modern Vampires of the City/03 Step.mp3"); 
 	 * 		new	Song("http://freedownloads.last.fm/download/569264057/Get%2BGot.mp3"); 
+	 		 new Song("/Users⁩/denisluckash⁩/⁨Downloads⁩/425556__planetronik__rock-808-beat.mp3"); 
 	 * </code>
 	 */
 	public Song(String songAddress) {

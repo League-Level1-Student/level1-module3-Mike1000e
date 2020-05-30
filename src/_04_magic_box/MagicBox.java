@@ -12,9 +12,11 @@ import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -46,11 +48,15 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 			System.err.println(w.getMessage());
 		}
 	}
-
+	JPanel pan = new JPanel();
+	JFrame frame = new JFrame("The Magic Box contains many secrets...");
+	
 	private void createUI() {
-		JFrame frame = new JFrame("The Magic Box contains many secrets...");
+
+		frame.add(pan);
 		frame.add(this);
-		setPreferredSize(new Dimension(backgroundImage.getWidth(), backgroundImage.getHeight()));
+		frame.addMouseListener(this);
+		setPreferredSize(new Dimension(400, backgroundImage.getHeight()));
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
@@ -78,7 +84,34 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
+		
 		// TODO Auto-generated method stub
+		JLabel label = new JLabel();
+		
+		
+		try {
+			label = new MediaPalace().loadImageFromTheInternet("https://www.google.com/imgres?imgurl=http%3A%2F%2Fcameronmcefee.com%2Fimg%2Fwork%2Fthe-octocat%2Foriginal.jpg&imgrefurl=http%3A%2F%2Fcameronmcefee.com%2Fwork%2Fthe-octocat%2F&tbnid=yanebB9oB1YO-M&vet=12ahUKEwi5vvKNsdrpAhUDhZ4KHZSeAp0QMygBegUIARCNAg..i&docid=ULX8OuTUtzD-aM&w=950&h=760&q=github%20cat&safe=strict&client=firefox-b-1-d&ved=2ahUKEwi5vvKNsdrpAhUDhZ4KHZSeAp0QMygBegUIARCNAg");
+		} catch (MalformedURLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		pan.add(label);
+		frame.pack();
+
+		new MediaPalace().speak("THIS is NOT a magic box.");
+		
+		pan.add(label);
+		frame.pack();
+		
+		
+		new MediaPalace().playSoundFromInternet("https://freesound.org/people/keineintresse/sounds/146694/");
+		
+		pan.add(label);
+		frame.pack();
+		
+		
+		
 		
 	}
 
